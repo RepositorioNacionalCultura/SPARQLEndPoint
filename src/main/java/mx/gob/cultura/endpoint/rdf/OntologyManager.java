@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Provides methods to manage Ontologies.
@@ -23,7 +24,7 @@ public class OntologyManager {
 
     public enum PropertyFilter {
         ANNOTATION, LITERAL, OBJECT
-    };
+    }
 
     /**
      * Constructor. Creates a new instance of {@link OntologyManager}.
@@ -76,7 +77,7 @@ public class OntologyManager {
         return ontology.getOntClass(uri);
     }
 
-    public ArrayList<Statement> filterProperties(OntClass cls, PropertyFilter filter) {
+    public List<Statement> filterProperties(OntClass cls, PropertyFilter filter) {
         ArrayList<Statement> ret = new ArrayList<>();
 
         StmtIterator it = cls.listProperties();
@@ -85,19 +86,10 @@ public class OntologyManager {
             RDFNode pred = st.getPredicate();
             if (pred.isResource()) {
                 OntResource rpred = cls.getOntModel().getOntResource(pred.asResource());
-                switch (filter) {
-                    case ANNOTATION: {
-                        if (rpred.isAnnotationProperty()) ret.add(st);
-                        break;
-                    }
-                    case OBJECT: {
-                        if (rpred.isResource()) ret.add(st);
-                        break;
-                    }
-                    case LITERAL: {
-                        if (rpred.isLiteral()) ret.add(st);
-                        break;
-                    }
+                if ((PropertyFilter.ANNOTATION == filter && rpred.isAnnotationProperty()) ||
+                        (PropertyFilter.OBJECT == filter && rpred.isResource()) ||
+                        (PropertyFilter.LITERAL == filter && rpred.isLiteral())) {
+                    ret.add(st);
                 }
             }
         }
@@ -105,7 +97,7 @@ public class OntologyManager {
         return ret;
     }
 
-    private ArrayList<String> RDFNodesToStringLiteralArray(ExtendedIterator<RDFNode> nodes) {
+    private ArrayList<String> rdfNodesToStringLiteralArray(ExtendedIterator<RDFNode> nodes) {
         ArrayList<String> ret = new ArrayList<>();
         if (null != nodes && nodes.hasNext()) {
             while (nodes.hasNext()) {

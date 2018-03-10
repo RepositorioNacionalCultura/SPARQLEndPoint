@@ -4,24 +4,20 @@
     Author     : juan.fernandez
 --%>
 
-<%@page import="java.util.HashMap"%>
-<%@page import="com.hp.hpl.jena.ontology.OntProperty"%>
-<%@page import="com.hp.hpl.jena.rdf.model.Statement"%>
-<%@page import="org.json.JSONArray"%>
-<%@page import="java.io.IOException"%>
-<%@page import="org.json.XML"%>
-<%@page import="org.json.JSONObject"%>
+<%@page import="com.hp.hpl.jena.ontology.OntClass"%>
+<%@page import="com.hp.hpl.jena.ontology.OntModel"%>
+<%@page import="com.hp.hpl.jena.ontology.OntModelSpec"%>
+<%@page import="com.hp.hpl.jena.rdf.model.RDFNode"%>
+<%@page import="com.hp.hpl.jena.vocabulary.DCTerms"%>
+<%@page import="com.hp.hpl.jena.vocabulary.RDFS"%>
+<%@page import="mx.gob.cultura.endpoint.rdf.OntologyManager"%>
 <%@page pageEncoding="utf-8" %>
-<%@ page import="com.hp.hpl.jena.ontology.OntClass" %>
-<%@ page import="com.hp.hpl.jena.ontology.OntModel" %>
-<%@ page import="com.hp.hpl.jena.ontology.OntModelSpec" %>
-<%@ page import="com.hp.hpl.jena.rdf.model.RDFNode" %>
-<%@ page import="com.hp.hpl.jena.vocabulary.DCTerms" %>
-<%@ page import="com.hp.hpl.jena.vocabulary.RDFS" %>
-<%@ page import="mx.gob.cultura.endpoint.rdf.OntologyManager" %>
+<%@ page import="org.json.JSONArray" %>
+<%@ page import="org.json.JSONObject" %>
 <%@ page import="java.net.URL" %>
 <%@ page import="java.net.URLEncoder" %>
 <%@ page import="java.nio.charset.StandardCharsets" %>
+<%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.List" %>
 <%
     String ontNS = "https://cultura.gob.mx/";

@@ -7,7 +7,7 @@
           <element id="module-output" name="sparqlendpoint" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Maven: com.github.RepositorioNacionalCultura:Commons:master-80053de797-1" />
+          <element id="library" level="project" name="Maven: com.github.RepositorioNacionalCultura:Commons:master-3e592792b1-1" />
           <element id="library" level="project" name="Maven: com.github.SWBForms:SWBDataManager:master-1.0-SNAPSHOT-g48bb1fc-12" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
           <element id="library" level="project" name="Maven: org.freemarker:freemarker:2.3.23" />

@@ -72,7 +72,7 @@ public class SPARQLEndPoint {
                 prologue=new Prologue(model.getGraph().getPrefixMapping());
             }catch(Exception e)
             {
-                e.printStackTrace();
+                log.error(e);
             }
         }
         return model;
@@ -95,8 +95,7 @@ public class SPARQLEndPoint {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
 
-        Response resp = getQueryResponse(query, format);
-        return resp;
+        return getQueryResponse(query, format);
     }
 
     /**
@@ -109,14 +108,13 @@ public class SPARQLEndPoint {
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public Response executeQueryForm(@FormParam("query") String query,
-                                 @FormParam("format") String format) throws IOException {
+                                 @FormParam("format") String format) {
 
         if (null == query || query.isEmpty()) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
 
-        Response resp = getQueryResponse(query, format);
-        return resp;
+        return getQueryResponse(query, format);
     }
 
     /**
@@ -127,16 +125,16 @@ public class SPARQLEndPoint {
     private SPARQLResult execQuery(String q) {
         if (null != q && null != model) {
             Query query = QueryFactory.create(q, Syntax.syntaxSPARQL_11);
-            QueryExecution qe = QueryExecutionFactory.create(q, model);
-
-            if (query.isSelectType()) {
-                return new SPARQLResult(qe.execSelect());
-            } else if (query.isAskType()) {
-                return new SPARQLResult(qe.execAsk());
-            } else if (query.isDescribeType()) {
-                return new SPARQLResult(qe.execDescribe());
-            } else if (query.isConstructType()) {
-                return new SPARQLResult(qe.execConstruct());
+            try (QueryExecution qe = QueryExecutionFactory.create(q, model)) {
+                if (query.isSelectType()) {
+                    return new SPARQLResult(qe.execSelect());
+                } else if (query.isAskType()) {
+                    return new SPARQLResult(qe.execAsk());
+                } else if (query.isDescribeType()) {
+                    return new SPARQLResult(qe.execDescribe());
+                } else if (query.isConstructType()) {
+                    return new SPARQLResult(qe.execConstruct());
+                }
             }
         }
 
@@ -166,7 +164,7 @@ public class SPARQLEndPoint {
                 RDFDataMgr.write(bous, rs.getModel(), lang);
                 ret = new String(bous.toByteArray());
             } catch (IOException ioex) {
-
+                log.error(ioex);
             }
         }
 
@@ -207,7 +205,7 @@ public class SPARQLEndPoint {
 
                 ret = new String(bous.toByteArray());
             } catch (IOException ioex) {
-
+                log.error(ioex);
             }
         }
         return ret;

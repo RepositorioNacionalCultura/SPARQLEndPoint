@@ -11,11 +11,6 @@ import javax.ws.rs.core.Response;
  */
 public class RDFEndPoint {
     /**
-     * Constructor. Creates a new instance of {@link RDFEndPoint}
-     */
-    public RDFEndPoint () { }
-
-    /**
      * Processes request to get ontology definition.
      * @return Response with ontology definition in RDF format.
      */
