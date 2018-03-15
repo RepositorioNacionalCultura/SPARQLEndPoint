@@ -66,7 +66,7 @@ public class SPARQLEndPoint {
                 //            //model=new ModelCom(new SWBTSGraphCache(new SWBTSGraph(new GraphImp("swb",params)),1000));
                 //            model=new ModelCom(new SWBTSGraph(new GraphImp("swb",params)));
 
-                String directory = "/data/tdb" ;
+                String directory = "/Users/hasdai/data/tdb" ;
                 dataset = TDBFactory.createDataset(directory) ;
                 model = dataset.getDefaultModel();
                 prologue=new Prologue(model.getGraph().getPrefixMapping());
@@ -122,19 +122,17 @@ public class SPARQLEndPoint {
      * @param q SPARQL query String.
      * @return {@link SPARQLResult} object
      */
-    private SPARQLResult execQuery(String q) {
+    private SPARQLResult execQuery(QueryExecution qe, String q) {
         if (null != q && null != model) {
-            Query query = QueryFactory.create(q, Syntax.syntaxSPARQL_11);
-            try (QueryExecution qe = QueryExecutionFactory.create(q, model)) {
-                if (query.isSelectType()) {
-                    return new SPARQLResult(qe.execSelect());
-                } else if (query.isAskType()) {
-                    return new SPARQLResult(qe.execAsk());
-                } else if (query.isDescribeType()) {
-                    return new SPARQLResult(qe.execDescribe());
-                } else if (query.isConstructType()) {
-                    return new SPARQLResult(qe.execConstruct());
-                }
+        Query query = QueryFactory.create(q, Syntax.syntaxSPARQL_11);
+            if (query.isSelectType()) {
+                return new SPARQLResult(qe.execSelect());
+            } else if (query.isAskType()) {
+                return new SPARQLResult(qe.execAsk());
+            } else if (query.isDescribeType()) {
+                return new SPARQLResult(qe.execDescribe());
+            } else if (query.isConstructType()) {
+                return new SPARQLResult(qe.execConstruct());
             }
         }
 
@@ -223,7 +221,8 @@ public class SPARQLEndPoint {
         }
 
         //Execute query
-        SPARQLResult ret = execQuery(query);
+        QueryExecution qe = QueryExecutionFactory.create(query, model);
+        SPARQLResult ret = execQuery(qe, query);
         if (null == ret) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
