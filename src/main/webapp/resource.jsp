@@ -44,7 +44,7 @@
         <div class="container">
             <%        if (null != uri) {
                     OntClass cls = mgr.getClass(uri);
-                    ArrayList<Statement> annotations = mgr.filterProperties(cls, OntologyManager.PropertyFilter.ANNOTATION);
+                    List<Statement> annotations = mgr.filterProperties(cls, OntologyManager.PropertyFilter.ANNOTATION);
                     //ArrayList<Statement> literals = mgr.filterProperties(cls, OntologyManager.PropertyFilter.LITERAL);
                     List<OntProperty> literals = cls.listDeclaredProperties(false).toList(); //mgr.filterProperties(cls, OntologyManager.PropertyFilter.DATATYPE);
                     StmtIterator objects = cls.listProperties(); //Axiomas de clase
