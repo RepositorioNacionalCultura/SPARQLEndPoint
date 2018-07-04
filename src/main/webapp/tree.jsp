@@ -49,8 +49,11 @@
         <link href="/css/bootstrap.css" rel="stylesheet">
         <link href="/css/qunit-1.12.0.css" rel="stylesheet">
         <title>Ontología</title>
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Oswald:200,500,600" rel="stylesheet">
+<link href="/css/ontologia.css" rel="stylesheet">
     </head>
-    <body>
+    <body  class="derecha">
 
         <div class="container-fluid">
             <div class="row content">

@@ -158,8 +158,11 @@
     <link href="/css/lightbox.css" rel="stylesheet">
     <link href="https://framework-gb.cdn.gob.mx/favicon.ico" rel="shortcut icon">
     <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Oswald:200,500,600" rel="stylesheet">
+<link href="/css/ontologia.css" rel="stylesheet">
 </head>
-<body>
+<body  class="derecha">
     
     <main id="mainx" class="page">
         <jsp:include page="nav.jsp"></jsp:include>    

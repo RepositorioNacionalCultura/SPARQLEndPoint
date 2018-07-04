@@ -12,8 +12,11 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/ie8/0.2.2/ie8.js"></script>
     <![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Oswald:200,500,600" rel="stylesheet">
+<link href="/css/ontologia.css" rel="stylesheet">
 </head>
-<body>
+<body  class="derecha">
     
     <main id="mainx" class="page">
         <%--<jsp:include page="nav.jsp"></jsp:include>--%>    

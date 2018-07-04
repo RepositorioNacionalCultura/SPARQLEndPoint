@@ -1,0 +1,24 @@
+
+/*LATERAL*/
+.sidenav    { background:#e43e56}
+.sidenav h2 { font-family:"Oswald"; font-size:35px; background:none; letter-spacing:1px; margin-bottom:20px; text-transform:uppercase; color:#FFF !important}
+.sidenav .list-group-item  a { text-decoration:none}
+.sidenav .list-group-item { background:none; border:none; border-bottom:solid 1px #FFF; color:#FFF; font-family:"Source Sans Pro"; font-size:20px; border-radius:0}
+.sidenav .list-group-item.node-ontology.node-selected { background:#4C4C4C !important}
+.sidenav .node-ontology:not(.node-disabled):hover { background:#666}
+
+.sidenav .glyphicon { font-size:24px; color:#FFF; font-weight:bold;}
+
+/*DERECHA*/
+.derecha    { }
+.derecha *  { font-family:"Source Sans Pro"; color:#333;}
+.derecha a  { text-decoration:underline}
+.derecha a:hover { color:#e43e56;}
+.derecha h2 { color:#e43e56; font-size:35px }
+.derecha h4 { color:#e43e56; margin:30px 0 0px}
+.derecha h4 + hr { border:2px solid#e43e56; margin:0 0 30px 0; width:22px}
+.derecha b { font-weight:normal}
+
+.derecha table                    { border:none; width:100% }
+.derecha table tr td:nth-child(1) { border-left:none; width:30%; word-break:break-all}
+.derecha table tr td:nth-child(2) { border-right:none; width:70% }
